@@ -4,15 +4,17 @@ using System.Text;
 
 namespace Core.Utilities.Results
 {
-   public class DataResult:Result
+    public class DataResult<T> : Result, IDataResult<T>
     {
-        public DataResult(string message):base(false,message)
+        public DataResult(T data, bool success, string message) : base(success, message)
         {
-
+            Data = data;
         }
-        public DataResult():base(false)
+
+        public DataResult(T data, bool success) : base(success)
         {
-
+            Data = data;
         }
+        public T Data { get; }
     }
 }

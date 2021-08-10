@@ -1,8 +1,10 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -15,9 +17,9 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car{CarId=1,BrandId=1,ColorId=1, DailyPrice=300,ModelYear="2012",Description="Dizel"},
-                new Car{CarId=2,BrandId=2,ColorId=2, DailyPrice=150,ModelYear="2015",Description="Spor"},
-                new Car{CarId=3,BrandId=2,ColorId=3, DailyPrice=250,ModelYear="2010",Description="Lpg"},
+                new Car{CarId=1,BrandId=1,ColorId=1, DailyPrice=300,ModelYear=2012,Description="Dizel"},
+                new Car{CarId=2,BrandId=2,ColorId=2, DailyPrice=150,ModelYear=2015,Description="Spor"},
+                new Car{CarId=3,BrandId=2,ColorId=3, DailyPrice=250,ModelYear=2020,Description="Lpg"},
 
             };
         }
@@ -62,6 +64,19 @@ namespace DataAccess.Concrete.InMemory
             return _cars.Where(c => c.ColorId == colorId).ToList();
         }
 
-        
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

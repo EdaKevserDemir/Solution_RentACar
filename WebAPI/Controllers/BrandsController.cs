@@ -11,19 +11,20 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ColorsController : ControllerBase
+    public class BrandsController : ControllerBase
     {
-        IColorService _colorService;
+        IBrandService _brandService;
 
-        public ColorsController(IColorService colorService)
+        public BrandsController(IBrandService brandService)
         {
-            _colorService = colorService;
+            _brandService = brandService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _colorService.GetAll();
+            var result = _brandService.GetAll();
+
             if (result.Success)
             {
                 return Ok(result);
@@ -32,33 +33,34 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getbyid")]
+
         public IActionResult Get(int id)
         {
-            var result = _colorService.GetById(id);
+            var result = _brandService.GetById(id);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
-        [HttpPost("add")]
-
-        public IActionResult Post(Color color)
+        
+        [HttpPost ("add")]
+        public IActionResult Post(Brand brand)
         {
-            var result = _colorService.Add(color);
-            if(result.Success)
+            var result = _brandService.Add(brand);
+            if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
+
         }
 
         [HttpPost("delete")]
 
-        public IActionResult Delete(Color color)
+        public IActionResult Delete(Brand brand)
         {
-            var result = _colorService.Delete(color);
+            var result = _brandService.Delete(brand);
             if (result.Success)
             {
                 return Ok(result);
@@ -68,16 +70,14 @@ namespace WebAPI.Controllers
 
         [HttpPost("update")]
 
-        public IActionResult Update(Color color)
+        public IActionResult Update(Brand brand)
         {
-            var result = _colorService.Update(color);
+            var result = _brandService.Update(brand);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
-
     }
 }

@@ -16,6 +16,7 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
+       //  [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
             if (brand.BrandName.Length < 2)
@@ -44,6 +45,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == brandId));
         }
 
+        //  [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);

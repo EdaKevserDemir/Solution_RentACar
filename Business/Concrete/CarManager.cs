@@ -20,6 +20,7 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        //  [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
             if (car.CarName.Length < 2)
@@ -80,6 +81,8 @@ namespace Business.Concrete
             _carDal.Delete(car);
             return new SuccessResult(Messages.CarDeleted);
         }
+
+        //  [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
             _carDal.Update(car);

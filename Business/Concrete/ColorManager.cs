@@ -17,6 +17,8 @@ namespace Business.Concrete
         {
             _colorDal = colorDal;
         }
+
+        //  [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
         {
             if (color.ColorName.Length < 2)
@@ -45,6 +47,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Color>(_colorDal.Get(cl => cl.ColorId == colorId));
         }
 
+        //  [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {
             _colorDal.Update(color);
